@@ -1,0 +1,35 @@
+In this question we'll learn about  how to do sum of two linked list
+as below you can see the example for the qestion
+Input: l1 = [7,2,4,3], l2 = [5,6,4]
+Output: [7,8,0,7]
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+#base case if any of the linked list will be empty then we can return the other linked list
+        if not l1:
+            return l2
+        if not l2:
+            return l1
+        res = ""
+        res1 = ""
+#The approach that i have taken is to store as string from both the linked list and then 
+#sum and the again create the linked list from that
+        while l1:
+            res+=str((l1.val))
+            l1 = l1.next
+        while l2:
+            res1+=str(l2.val)
+            l2 = l2.next
+        result = int(res)+int(res1)
+        dummy =dummylist= ListNode(0)
+        for i in str(result):
+            dummy.next=ListNode(i)
+            dummy=dummy.next
+        
+        return dummylist.next
