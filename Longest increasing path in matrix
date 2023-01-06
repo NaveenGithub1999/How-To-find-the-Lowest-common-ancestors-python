@@ -1,0 +1,40 @@
+
+Runtime
+976 ms
+Beats
+48.44%
+Memory
+18.3 MB
+Beats
+37.31%
+Click to check the distribution chart
+Notes
+Write your notes here
+Related Tags
+Select tags
+0/5
+class Solution:
+    def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
+        ROWS,COLS = len(matrix),len(matrix[0])
+#to store the each and every path from the matrix using the dictionary
+        dp = {}
+#define an function called dfs to traverse each element in matrix
+#r for row and c for cols where we gave the prev value as base value atleast it have
+        def dfs(r,c,prev):
+#base case checking if the vakue of column is either 0 or length of matrix we return 0
+            if(r<0 or r==ROWS or c<0 or c==COLS or matrix[r][c]<=prev):
+                return 0
+#base case  if the path already there then return the value of the path
+            if (r,c) in dp:
+                return dp[(r,c)]
+            res = 1
+            res = max(res,1+dfs(r+1,c,matrix[r][c]))
+            res = max(res,1+dfs(r-1,c,matrix[r][c]))
+            res = max(res,1+dfs(r,c+1,matrix[r][c]))
+            res = max(res,1+dfs(r,c-1,matrix[r][c]))
+            dp[(r,c)] = res
+            return res
+        for r in range(ROWS):
+            for c in range(COLS):
+                dfs(r,c,-1)
+        return max(dp.values())
