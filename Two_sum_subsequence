@@ -1,0 +1,8 @@
+def twosum(nums,target):
+  for i in range(1,len(nums)):
+    if nums[i]+nums[i-1]==target:
+      return [i-1,i]
+  return 0
+a = [2,7,11,15]
+print(twosum(a,9))
+  
