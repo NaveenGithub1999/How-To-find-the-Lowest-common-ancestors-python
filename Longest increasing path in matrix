@@ -1,18 +1,4 @@
 
-Runtime
-976 ms
-Beats
-48.44%
-Memory
-18.3 MB
-Beats
-37.31%
-Click to check the distribution chart
-Notes
-Write your notes here
-Related Tags
-Select tags
-0/5
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         ROWS,COLS = len(matrix),len(matrix[0])
