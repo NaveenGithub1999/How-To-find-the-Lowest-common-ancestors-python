@@ -1,0 +1,12 @@
+#maximum/minimum sum of subarry with size of k
+def subarraysum(nums,k):
+    currsum = 0
+    for i in range(len(nums)):
+#Taking the sum of only k length of elements
+        a = sum(nums[i:k+i])
+#updating the maximum sum valuse
+        currsum = max(currsum,a)
+    return currsum
+
+arr = [1,4,32,10,3,2,20]
+print(subarraysum(arr,3))  
