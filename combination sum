@@ -1,0 +1,42 @@
+Given a collection of candidate numbers (candidates) and a target number (target),
+find all unique combinations in candidates where the candidate numbers sum to target.
+
+Each number in candidates may only be used once in the combination.
+
+Note: The solution set must not contain duplicate combinations.
+
+ 
+
+Example 1:
+
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: 
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
+
+
+
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        #it will be easy if sort the candidates
+        res = []
+        candidates.sort()
+        #creating the helper function
+        def dfs(self,idx,path,cur):
+            #base cases
+            if cur>target:
+                return
+            if cur==target:
+                res.append(path)
+            #traversing through all the elements till length of candidates
+            for i in range(idx,len(candidates)):
+                #condition to remove the duplicates from the list
+                if i>idx and candidates[i]==candidates[i-1]:
+                    continue  #continue will stop there and return to top loop
+                dfs(self,i+1,path+[candidates[i]],cur+candidates[i])
+        dfs(self,0,[],0)
+        return res
