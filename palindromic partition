@@ -1,0 +1,38 @@
+Given a string s, partition s such that every 
+substring
+ of the partition is a 
+palindrome
+. Return all possible palindrome partitioning of s.
+
+ 
+
+Example 1:
+
+Input: s = "aab"
+Output: [["a","a","b"],["aa","b"]]
+Example 2:
+
+Input: s = "a"
+Output: [["a"]]
+
+
+
+******************************************************************************************
+
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        ans = []
+        #create helper function dfs
+        def dfs(currlist,k):
+            if k == len(s):
+                ans.append(currlist)
+                return
+            
+
+            for i in range(k,len(s)):
+                tmpstr = s[k:i+1]
+                if tmpstr==tmpstr[::-1]:
+
+                    dfs(currlist+[tmpstr],i+1)
+        dfs([],0)
+        return ans
